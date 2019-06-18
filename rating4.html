@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://kit.fontawesome.com/65cb952072.js"></script>
+    <title>Rating</title>
+    <style>
+        #wraper{
+            text-align:center;
+    
+        }
+
+    </style>
+</head>
+<body>
+    <div id="wraper">
+        <i id="1" class="fab fa-angellist fa-5x"  onmouseover="posarColor(1)" onClick="pintarColor(1)"></i>
+        <i id="2" class="fab fa-angellist fa-5x"  onmouseover="posarColor(2)" onClick="pintarColor(2)"></i>
+        <i id="3" class="fab fa-angellist fa-5x"  onmouseover="posarColor(3)" onClick="pintarColor(3)"></i>
+        <i id="4" class="fab fa-angellist fa-5x"  onmouseover="posarColor(4)" onClick="pintarColor(4)"></i>
+        <i id="5" class="fab fa-angellist fa-5x"  onmouseover="posarColor(5)" onClick="pintarColor(5)"></i>
+    </div>
+</body>
+<script>
+   
+
+    function posarColor(id){
+        for(var i = 1 ; i <= id ; i++){
+            var icon2 = document.getElementById(i);
+            icon2.style.color="yellow";
+        }
+
+    }
+
+
+    function deleteColor(){
+        for(var i = 1 ; i <= 5 ; i++){
+            var icon3 = document.getElementById(i);
+            icon3.style.color="";
+        }
+
+    } 
+          
+    function pintarColor(id){
+        deleteColor();
+        console.log(id);
+        var icon = document.getElementById(id);
+        icon.style.color="magenta";
+        
+        for(var i = 1 ; i <= id ; i++){
+            var icon2 = document.getElementById(i);
+            icon2.style.color="magenta";
+        }
+        
+    } 
+
+
+    document.onclick = function (e) {
+        e = e || event
+        var target = e.target || e.srcElement
+        var elemento = document.getElementById('wraper');
+        do {
+            if (elemento == target) {
+                // El click se ha producido dentro del elemento, no se hace nada.
+                return;
+            }
+            target = target.parentNode;
+        } while (target)
+            // Se ha clicado fuera del elemento, se realiza una acción.
+            deleteColor();
+    }
+</script>
+</html>
